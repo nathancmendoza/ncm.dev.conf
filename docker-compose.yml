@@ -1,0 +1,12 @@
+version: "0.1"
+
+services:
+  portfolio:
+    container_name: web-portfolio
+    image: web_portfolio
+    build:
+      context: .
+      dockerfile: ./containerfiles/Containerfile-portfolio
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
