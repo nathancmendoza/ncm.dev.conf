@@ -1,4 +1,4 @@
-version: "0.1"
+version: "0.2"
 
 services:
   portfolio:
@@ -10,3 +10,13 @@ services:
     restart: unless-stopped
     ports:
       - "8080:8080"
+
+  ucinotes:
+    container_name: uci-notebook
+    image: uci_notebook
+    build:
+      context: .
+      dockerfile: ./containerfiles/Containerfile-ucinotebook
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
