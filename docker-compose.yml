@@ -1,4 +1,4 @@
-version: "0.2"
+version: "0.3"
 
 services:
   portfolio:
@@ -11,6 +11,16 @@ services:
     ports:
       - "8080:8080"
 
+  archivelist:
+    container_name: archive-list
+    image: archive_list
+    build:
+      context: .
+      dockerfile: ./containerfiles/Containerfile-notearchivelist
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+
   ucinotes:
     container_name: uci-notebook
     image: uci_notebook
@@ -19,4 +29,4 @@ services:
       dockerfile: ./containerfiles/Containerfile-ucinotebook
     restart: unless-stopped
     ports:
-      - "8081:8080"
+      - "8082:8080"
