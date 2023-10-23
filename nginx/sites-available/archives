@@ -16,14 +16,14 @@ server {
 
 	server_name notes.ncm.dev;
 
-	location / {
-		proxy_pass http://archivelist;
+	location /uci/ {
+		proxy_pass http://ucinotes/;
 		proxy_http_version 1.1;
 		proxy_set_header Connection "";
 	}
-
-	location /ucinotes/ {
-		proxy_pass http://ucinotes/;
+	
+	location / {
+		proxy_pass http://archivelist/;
 		proxy_http_version 1.1;
 		proxy_set_header Connection "";
 	}
