@@ -30,3 +30,13 @@ services:
     restart: unless-stopped
     ports:
       - "8082:8080"
+
+  itnotess:
+    container_name: it-notes
+    image: it_notes
+    build:
+      context: .
+      dockerfile: ./containerfiles/Containerfile-itnotebook
+    restart: unless-stopped
+    ports:
+      - "8083:8080"

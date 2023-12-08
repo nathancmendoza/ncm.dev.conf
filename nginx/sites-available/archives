@@ -8,6 +8,11 @@ upstream ucinotes {
 	keepalive 32;
 }
 
+upstream itnotes {
+  server 127.0.0.1:8083;
+  keepalive 32;
+}
+
 server {
 	listen 443 ssl;
 
@@ -21,6 +26,12 @@ server {
 		proxy_http_version 1.1;
 		proxy_set_header Connection "";
 	}
+
+  location /itnotes/ {
+    proxy_pass http://itnotes/;
+    proxy_http_version 1.1;
+    proxy_set_header Connection "";
+  }
 	
 	location / {
 		proxy_pass http://archivelist/;
