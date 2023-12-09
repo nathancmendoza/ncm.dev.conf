@@ -36,7 +36,7 @@ services:
     image: it_notes
     build:
       context: .
-      dockerfile: ./containerfiles/Containerfile-itnotebook
+      dockerfile: ./containerfiles/Containerfile-itnotes
     restart: unless-stopped
     ports:
       - "8083:8080"
