@@ -4,7 +4,7 @@ ENV GIT_REPO=https://github.com/nathancmendoza/web-portfolio.git
 ENV APP_DIR=/app/web-portfolio
 
 # Install container dependencies
-RUN apk update && apk add --no-cache git npm wget go hugo
+RUN apk update && apk add --no-cache git npm go hugo
 
 # Check out code
 RUN git clone ${GIT_REPO} ${APP_DIR}
@@ -13,8 +13,6 @@ WORKDIR ${APP_DIR}
 
 # Install site dependencies
 RUN npm install 
-RUN wget -c https://github.com/hugo-toha/toha/archive/refs/tags/v3.8.0.tar.gz -O - | tar -xz
-RUN mv toha-3.8.0/* themes/toha && rm -rf toha-3.8.0/
 RUN hugo --minify
 
 FROM nginx:alpine
