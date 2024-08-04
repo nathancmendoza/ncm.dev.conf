@@ -1,0 +1,19 @@
+global:
+  checkNewVersion: true
+  sendAnonymousUsage: false
+
+providers:
+  file:
+    directory: /etc/traefik/dynamic
+    watch: true
+
+entryPoints:
+  dns:
+    address: :53
+    transport: udp
+
+api:
+  insecure: true
+  dashboard: true
+  debug: true
+  disableDashboardAd: true

@@ -1,0 +1,12 @@
+udp:
+  routers:
+    nameserver:
+      entryPoints:
+        - dns
+      services:
+        LANDomainResolver:
+          loadBalancer:
+            servers:
+              - address: "192.168.0.250:9053"
+              - address: "192.168.0.150:10053"
+
