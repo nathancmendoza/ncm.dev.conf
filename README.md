@@ -1,1 +1,0 @@
-# ncm.dev.conf
