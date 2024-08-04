@@ -1,12 +1,12 @@
 upstreams:
   init:
     strategy: failOnError
-    groups:
-      default:
-        - 1.1.1.1 # Cloudflare
-        - 8.8.8.8 # Google
-    strategy: parallel_best
-    timeout: 2s
+  groups:
+    default:
+      - 1.1.1.1 # Cloudflare
+      - 8.8.8.8 # Google
+  strategy: parallel_best
+  timeout: 2s
 
 connectIPVersion: dual
 
