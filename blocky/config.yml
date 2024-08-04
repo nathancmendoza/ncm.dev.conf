@@ -1,0 +1,21 @@
+upstreams:
+  init:
+    strategy: failOnError
+    groups:
+      default:
+        - 1.1.1.1 # Cloudflare
+        - 8.8.8.8 # Google
+    strategy: parallel_best
+    timeout: 2s
+
+connectIPVersion: dual
+
+customDNS:
+  customTTL: 1h
+  mapping:
+    example.lan: 192.168.0.250
+
+blocking:
+  denylists:
+    ads:
+      - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
