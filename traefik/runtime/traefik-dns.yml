@@ -2,11 +2,25 @@ udp:
   routers:
     nameserver:
       entryPoints:
-        - dns
-      services:
-        LANDomainResolver:
-          loadBalancer:
-            servers:
-              - address: "192.168.0.250:9053"
-              - address: "192.168.0.150:10053"
+        - dnsoverudp
+      service: LanDomainResolver
+  services:
+    LanDomainResolver:
+      loadBalancer:
+        servers:
+          - address: lan-nameserver-1-ix-chart.ix-lan-nameserver-1.svc.cluster.local:53
+          - address: lan-nameserver-2-ix-chart.ix-lan-nameserver-2.svc.cluster.local:53
 
+tcp:
+  routers:
+    nameserver:
+      entryPoints:
+        - dnsovertcp
+      service: LanDomainResolver
+      rule: ClientIP(`192.168.0.0/24`)
+  services:
+    LanDomainResolver:
+      loadBalancer:
+        servers:
+          - address: lan-nameserver-1-ix-chart.ix-lan-nameserver-1.svc.cluster.local:53
+          - address: lan-nameserver-2-ix-chart.ix-lan-nameserver-2.svc.cluster.local:53

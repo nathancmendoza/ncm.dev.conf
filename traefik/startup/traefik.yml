@@ -4,13 +4,14 @@ global:
 
 providers:
   file:
-    directory: /etc/traefik/dynamic
+    directory: /srv/traefik/config
     watch: true
 
 entryPoints:
-  dns:
+  dnsoverudp:
+    address: :53/udp
+  dnsovertcp:
     address: :53
-    transport: udp
 
 api:
   insecure: true
